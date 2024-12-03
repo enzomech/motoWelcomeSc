@@ -1,2 +1,0 @@
-FRAME_NB="160"
-SPEED_NB="0.02"
