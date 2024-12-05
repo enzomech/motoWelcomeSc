@@ -97,11 +97,11 @@ function test_speed {
 	case "$return_answer" in
 		1)
 			echo "So you have all of your time huh ?"
-			temp_speed_nb=0.06
+			temp_speed_nb=0.1
 			;;
 		2)
 			echo "You selected a slow speed option."
-			temp_speed_nb=0.044
+			temp_speed_nb=0.5
 			;;
 		3)
 			echo "Alright busy guy, let's test that."
@@ -127,8 +127,14 @@ function add_to_bashrc {
 		echo "The script is already in .bashrc. No changes made."
 	else
         	# Add the script path to .bashrc
+		echo ""  >> ~/.bashrc
+		echo "#Moto Script" >> ~/.bashrc
         	echo "$RUN_SCRIPT" >> ~/.bashrc
+		echo "alias motoRun='$RUN_SCRIPT'" >> ~/.bashrc
+		echo "alias motoConf='$(realpath "$0")'" >> ~/.bashrc
 		echo "Added $RUN_SCRIPT to .bashrc."
+		echo "Added alias to .bashrc, now you can use 'motoRun' cmd to start the script or 'motoConf' to start again the config script"
+		echo "If you want to test it now you can do so by refreshing your bashrc : source ~/.bashrc"
 	fi
 }
 
