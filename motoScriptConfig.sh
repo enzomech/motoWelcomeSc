@@ -42,17 +42,19 @@ function vars_init {
 			echo "$VARS_FILE found, but values were null, temporary initialising the values by default settings for the config"
 			temp_frame_nb=$DEFAULT_FRAME_NB
 			temp_speed_nb=$DEFAULT_SPEED_NB
+			vars_export
 		fi
 	else
 		echo "$VARS_FILE not found, temporary initialising the values by default settings for the config"
 		temp_frame_nb=$DEFAULT_FRAME_NB
 		temp_speed_nb=$DEFAULT_SPEED_NB
+		vars_export
 	fi
 }
 
 # Function exporting vars to the shared vars script, ready to be used by the main script
 function vars_export {
-	cat <<EOL > scriptVars.sh
+	cat <<EOL > $SCRIPT_DIR/scriptVars.sh
 FRAME_NB="$temp_frame_nb"
 SPEED_NB="$temp_speed_nb"
 EOL
